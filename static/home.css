@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #202124;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+}
+
+main {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 6rem;
+}
+
+form {
+    background: #303134;
+    height: 3rem;
+    width: 40rem;
+    border-radius: 2rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin: 3rem auto 2rem auto;
+}
+
+svg {
+    position: absolute;
+    height: 1.5rem;
+    width: 1.5rem;
+    left: 0.6rem;
+    fill: #bdc1c6;
+}
+
+input {
+    background: #303134;
+    height: 100%;
+    width: 100%;
+    border-radius: 2rem;
+    border: 0;
+    padding-left: 2.5rem;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+}
+
+input::placeholder {
+    color: #bdc1c6;
+}
+
+input:focus {
+    outline: 0;
+    border: 2px solid #5f6368;
+}
+
+header {
+    font-size: 4rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+
+.suggestions {
+    width: 40rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.suggestions a {
+    color: #bdc1c6;
+    text-decoration: none;
+    padding: 0.2rem 0.5rem;
+    border: 0.5px solid #bdc1c6;
+    border-radius: 4px;
+    font-size: 14px;
+    margin: 0.5rem;
+}
+
+.suggestions a:hover {
+    background: #bdc1c6;
+    color: blue;
+}

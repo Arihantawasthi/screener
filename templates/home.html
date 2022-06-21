@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet"> 
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+
+    <title>Screener Tool - Analyze company easily</title>
+</head>
+<body>
+    <main>
+        <div>
+            <header>Investment Predition Screening Tool</header>
+            <p>Company analysis and Screening Tool. Instant investment prediction.</p>
+            <form action="http://127.0.0.1:5000/" method="post"> 
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#bdc1c6"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                <input type="text" name="search" placeholder="Search a Company" />
+            </form>
+            <div class="suggestions">
+                Or analyze:
+                <a href="http://127.0.0.1:5000/info/TATA STEEL LTD" rel="noopener noreferrer">Tata Steel</a>
+                <a href="http://127.0.0.1:5000/info/AARTI DRUGS TEST" rel="noopener noreferrer">Aarti Drugs Test</a>
+                <a href="http://127.0.0.1:5000/info/AVANTI FEEDS LTD" rel="noopener noreferrer">Avanti Feeds</a>
+                <a href="http://127.0.0.1:5000/info/ZOMATO LTD" rel="noopener noreferrer">Zomato</a>
+                <a href="http://127.0.0.1:5000/info/YES BANK LTD" rel="noopener noreferrer">Yes Bank</a>
+                <a href="http://127.0.0.1:5000/info/RELIANCE INDUSTRIES LTD" rel="noopener noreferrer">Reliance</a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

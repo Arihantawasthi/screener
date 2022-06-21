@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='info.css') }}">
+
+    <title>Screener Tool | Analyze Company</title>
+</head>
+<body>
+    <main>
+        <header>
+            {{company_name}}
+        </header>
+        <div class="profit-container">
+            <p>Net Profit: </p>
+            <canvas id="profit"></canvas>
+        </div>
+
+        <div class="gauge-box-container">
+            <div class="gauge-box">
+                <div class="gauge-container">
+                    <canvas id="gauge1"></canvas>
+                </div>
+                <div class="gauge-title">
+                    Earnings Per Share
+                    <a href="http://127.0.0.1:5000/faq">
+                        <svg class="info" xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path d="M12 22Q9.925 22 8.1 21.212Q6.275 20.425 4.925 19.075Q3.575 17.725 2.788 15.9Q2 14.075 2 12Q2 9.925 2.788 8.1Q3.575 6.275 4.925 4.925Q6.275 3.575 8.1 2.787Q9.925 2 12 2Q14.075 2 15.9 2.787Q17.725 3.575 19.075 4.925Q20.425 6.275 21.212 8.1Q22 9.925 22 12Q22 14.075 21.212 15.9Q20.425 17.725 19.075 19.075Q17.725 20.425 15.9 21.212Q14.075 22 12 22ZM12 9Q12.425 9 12.713 8.712Q13 8.425 13 8Q13 7.575 12.713 7.287Q12.425 7 12 7Q11.575 7 11.288 7.287Q11 7.575 11 8Q11 8.425 11.288 8.712Q11.575 9 12 9ZM11 17H13V11H11Z"/></svg>
+                    </a>
+                </div>
+                <div class="eps-result subtext"></div>
+            </div>
+            <div class="gauge-box">
+                <div class="gauge-container">
+                    <canvas id="gauge2"></canvas>
+                </div>
+                <div class="gauge-title">
+                    Dividend Payout 
+                    <a href="http://127.0.0.1:5000/faq">
+                        <svg class="info" xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path d="M12 22Q9.925 22 8.1 21.212Q6.275 20.425 4.925 19.075Q3.575 17.725 2.788 15.9Q2 14.075 2 12Q2 9.925 2.788 8.1Q3.575 6.275 4.925 4.925Q6.275 3.575 8.1 2.787Q9.925 2 12 2Q14.075 2 15.9 2.787Q17.725 3.575 19.075 4.925Q20.425 6.275 21.212 8.1Q22 9.925 22 12Q22 14.075 21.212 15.9Q20.425 17.725 19.075 19.075Q17.725 20.425 15.9 21.212Q14.075 22 12 22ZM12 9Q12.425 9 12.713 8.712Q13 8.425 13 8Q13 7.575 12.713 7.287Q12.425 7 12 7Q11.575 7 11.288 7.287Q11 7.575 11 8Q11 8.425 11.288 8.712Q11.575 9 12 9ZM11 17H13V11H11Z"/></svg>
+                    </a>
+                </div>
+                <div class="payout-result subtext"></div>
+            </div> 
+            <div class="gauge-box">
+                <div class="gauge-container">
+                    <canvas id="gauge3"></canvas>
+                </div>
+                <div class="gauge-title">
+                    Stock Price Valuation
+                    <a href="127.0.0.1:5000/faq">
+                        <svg class="info" xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path d="M12 22Q9.925 22 8.1 21.212Q6.275 20.425 4.925 19.075Q3.575 17.725 2.788 15.9Q2 14.075 2 12Q2 9.925 2.788 8.1Q3.575 6.275 4.925 4.925Q6.275 3.575 8.1 2.787Q9.925 2 12 2Q14.075 2 15.9 2.787Q17.725 3.575 19.075 4.925Q20.425 6.275 21.212 8.1Q22 9.925 22 12Q22 14.075 21.212 15.9Q20.425 17.725 19.075 19.075Q17.725 20.425 15.9 21.212Q14.075 22 12 22ZM12 9Q12.425 9 12.713 8.712Q13 8.425 13 8Q13 7.575 12.713 7.287Q12.425 7 12 7Q11.575 7 11.288 7.287Q11 7.575 11 8Q11 8.425 11.288 8.712Q11.575 9 12 9ZM11 17H13V11H11Z"/></svg>
+                    </a>
+                </div>
+                <div class="p2e-result subtext"></div>
+            </div> 
+            <div class="gauge-box">
+                <div class="gauge-container">
+                    <canvas id="gauge4"></canvas>
+                </div>
+                <div class="gauge-title">
+                    Return on Equity 
+                    <a href="127.0.0.1:5000/faq">
+                        <svg class="info" xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path d="M12 22Q9.925 22 8.1 21.212Q6.275 20.425 4.925 19.075Q3.575 17.725 2.788 15.9Q2 14.075 2 12Q2 9.925 2.788 8.1Q3.575 6.275 4.925 4.925Q6.275 3.575 8.1 2.787Q9.925 2 12 2Q14.075 2 15.9 2.787Q17.725 3.575 19.075 4.925Q20.425 6.275 21.212 8.1Q22 9.925 22 12Q22 14.075 21.212 15.9Q20.425 17.725 19.075 19.075Q17.725 20.425 15.9 21.212Q14.075 22 12 22ZM12 9Q12.425 9 12.713 8.712Q13 8.425 13 8Q13 7.575 12.713 7.287Q12.425 7 12 7Q11.575 7 11.288 7.287Q11 7.575 11 8Q11 8.425 11.288 8.712Q11.575 9 12 9ZM11 17H13V11H11Z"/></svg>
+                    </a>
+                </div>
+                <div class="roe-result subtext"></div>
+            </div> 
+            <div class="gauge-box">
+                <div class="gauge-container">
+                    <canvas id="gauge5"></canvas>
+                </div>
+                <div class="gauge-title">
+                    Return on Capital Employed
+                    <a href="127.0.0.1:5000">
+                        <svg class="info" xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path d="M12 22Q9.925 22 8.1 21.212Q6.275 20.425 4.925 19.075Q3.575 17.725 2.788 15.9Q2 14.075 2 12Q2 9.925 2.788 8.1Q3.575 6.275 4.925 4.925Q6.275 3.575 8.1 2.787Q9.925 2 12 2Q14.075 2 15.9 2.787Q17.725 3.575 19.075 4.925Q20.425 6.275 21.212 8.1Q22 9.925 22 12Q22 14.075 21.212 15.9Q20.425 17.725 19.075 19.075Q17.725 20.425 15.9 21.212Q14.075 22 12 22ZM12 9Q12.425 9 12.713 8.712Q13 8.425 13 8Q13 7.575 12.713 7.287Q12.425 7 12 7Q11.575 7 11.288 7.287Q11 7.575 11 8Q11 8.425 11.288 8.712Q11.575 9 12 9ZM11 17H13V11H11Z"/></svg>
+                    </a>
+                </div>
+                <div class="roce-result subtext"></div>
+            </div> 
+        </div>
+
+        <div class="final-verdict">
+            <div class="final-data">{{final_verdict}}</div>
+            <span>Final Verdict: </span> 
+            <svg class="star" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M15.35 41.2Q14.5 41.9 13.575 41.25Q12.65 40.6 13 39.55L16.3 28.8L7.8 22.7Q6.9 22.05 7.225 21.025Q7.55 20 8.65 20H19.2L22.55 8.8Q22.7 8.25 23.125 7.975Q23.55 7.7 24 7.7Q24.45 7.7 24.875 7.975Q25.3 8.25 25.45 8.8L28.8 20H39.35Q40.45 20 40.775 21.025Q41.1 22.05 40.2 22.7L31.7 28.8L35 39.55Q35.35 40.6 34.425 41.25Q33.5 41.9 32.65 41.2L24 34.6Z"/></svg>
+            <svg class="star" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M15.35 41.2Q14.5 41.9 13.575 41.25Q12.65 40.6 13 39.55L16.3 28.8L7.8 22.7Q6.9 22.05 7.225 21.025Q7.55 20 8.65 20H19.2L22.55 8.8Q22.7 8.25 23.125 7.975Q23.55 7.7 24 7.7Q24.45 7.7 24.875 7.975Q25.3 8.25 25.45 8.8L28.8 20H39.35Q40.45 20 40.775 21.025Q41.1 22.05 40.2 22.7L31.7 28.8L35 39.55Q35.35 40.6 34.425 41.25Q33.5 41.9 32.65 41.2L24 34.6Z"/></svg>
+            <svg class="star" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M15.35 41.2Q14.5 41.9 13.575 41.25Q12.65 40.6 13 39.55L16.3 28.8L7.8 22.7Q6.9 22.05 7.225 21.025Q7.55 20 8.65 20H19.2L22.55 8.8Q22.7 8.25 23.125 7.975Q23.55 7.7 24 7.7Q24.45 7.7 24.875 7.975Q25.3 8.25 25.45 8.8L28.8 20H39.35Q40.45 20 40.775 21.025Q41.1 22.05 40.2 22.7L31.7 28.8L35 39.55Q35.35 40.6 34.425 41.25Q33.5 41.9 32.65 41.2L24 34.6Z"/></svg>
+            <svg class="star" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M15.35 41.2Q14.5 41.9 13.575 41.25Q12.65 40.6 13 39.55L16.3 28.8L7.8 22.7Q6.9 22.05 7.225 21.025Q7.55 20 8.65 20H19.2L22.55 8.8Q22.7 8.25 23.125 7.975Q23.55 7.7 24 7.7Q24.45 7.7 24.875 7.975Q25.3 8.25 25.45 8.8L28.8 20H39.35Q40.45 20 40.775 21.025Q41.1 22.05 40.2 22.7L31.7 28.8L35 39.55Q35.35 40.6 34.425 41.25Q33.5 41.9 32.65 41.2L24 34.6Z"/></svg>
+            <svg class="star" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M15.35 41.2Q14.5 41.9 13.575 41.25Q12.65 40.6 13 39.55L16.3 28.8L7.8 22.7Q6.9 22.05 7.225 21.025Q7.55 20 8.65 20H19.2L22.55 8.8Q22.7 8.25 23.125 7.975Q23.55 7.7 24 7.7Q24.45 7.7 24.875 7.975Q25.3 8.25 25.45 8.8L28.8 20H39.35Q40.45 20 40.775 21.025Q41.1 22.05 40.2 22.7L31.7 28.8L35 39.55Q35.35 40.6 34.425 41.25Q33.5 41.9 32.65 41.2L24 34.6Z"/></svg>
+        </div>
+
+        <div class="stars-info">
+            <div class="info-card">
+                <div class="info-head">
+                    5 <svg class="info-svg" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M15.35 41.2Q14.5 41.9 13.575 41.25Q12.65 40.6 13 39.55L16.3 28.8L7.8 22.7Q6.9 22.05 7.225 21.025Q7.55 20 8.65 20H19.2L22.55 8.8Q22.7 8.25 23.125 7.975Q23.55 7.7 24 7.7Q24.45 7.7 24.875 7.975Q25.3 8.25 25.45 8.8L28.8 20H39.35Q40.45 20 40.775 21.025Q41.1 22.05 40.2 22.7L31.7 28.8L35 39.55Q35.35 40.6 34.425 41.25Q33.5 41.9 32.65 41.2L24 34.6Z"/></svg>
+                </div>
+                <div class="desc">Company has exceptional performance and growth potential, Investment highly recommended!</div>
+            </div>
+            <div class="info-card">
+                <div class="info-head">
+                    4 <svg class="info-svg" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M15.35 41.2Q14.5 41.9 13.575 41.25Q12.65 40.6 13 39.55L16.3 28.8L7.8 22.7Q6.9 22.05 7.225 21.025Q7.55 20 8.65 20H19.2L22.55 8.8Q22.7 8.25 23.125 7.975Q23.55 7.7 24 7.7Q24.45 7.7 24.875 7.975Q25.3 8.25 25.45 8.8L28.8 20H39.35Q40.45 20 40.775 21.025Q41.1 22.05 40.2 22.7L31.7 28.8L35 39.55Q35.35 40.6 34.425 41.25Q33.5 41.9 32.65 41.2L24 34.6Z"/></svg>
+                </div>
+                <div class="desc">Company has near perfect performance and great growth, recommended to invest.</div>
+            </div>
+            <div class="info-card">
+                <div class="info-head">
+                    3 <svg class="info-svg" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M15.35 41.2Q14.5 41.9 13.575 41.25Q12.65 40.6 13 39.55L16.3 28.8L7.8 22.7Q6.9 22.05 7.225 21.025Q7.55 20 8.65 20H19.2L22.55 8.8Q22.7 8.25 23.125 7.975Q23.55 7.7 24 7.7Q24.45 7.7 24.875 7.975Q25.3 8.25 25.45 8.8L28.8 20H39.35Q40.45 20 40.775 21.025Q41.1 22.05 40.2 22.7L31.7 28.8L35 39.55Q35.35 40.6 34.425 41.25Q33.5 41.9 32.65 41.2L24 34.6Z"/></svg>
+                </div>
+                <div class="desc">Company has shown average performance but good chances of growth, consider investment.</div>
+            </div>
+            <div class="info-card">
+                <div class="info-head">
+                    2 <svg class="info-svg" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M15.35 41.2Q14.5 41.9 13.575 41.25Q12.65 40.6 13 39.55L16.3 28.8L7.8 22.7Q6.9 22.05 7.225 21.025Q7.55 20 8.65 20H19.2L22.55 8.8Q22.7 8.25 23.125 7.975Q23.55 7.7 24 7.7Q24.45 7.7 24.875 7.975Q25.3 8.25 25.45 8.8L28.8 20H39.35Q40.45 20 40.775 21.025Q41.1 22.05 40.2 22.7L31.7 28.8L35 39.55Q35.35 40.6 34.425 41.25Q33.5 41.9 32.65 41.2L24 34.6Z"/></svg>
+                </div>
+                <div class="desc">Company has very few good aspects, avoid investment.</div>
+            </div>
+            <div class="info-card">
+                <div class="info-head"> 
+                    1 <svg class="info-svg" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M15.35 41.2Q14.5 41.9 13.575 41.25Q12.65 40.6 13 39.55L16.3 28.8L7.8 22.7Q6.9 22.05 7.225 21.025Q7.55 20 8.65 20H19.2L22.55 8.8Q22.7 8.25 23.125 7.975Q23.55 7.7 24 7.7Q24.45 7.7 24.875 7.975Q25.3 8.25 25.45 8.8L28.8 20H39.35Q40.45 20 40.775 21.025Q41.1 22.05 40.2 22.7L31.7 28.8L35 39.55Q35.35 40.6 34.425 41.25Q33.5 41.9 32.65 41.2L24 34.6Z"/></svg>
+                </div>
+                <div class="desc">The company’s performance is not good, avoid investment.</div>
+            </div>
+            <div class="risk-note">
+                Note: Investment is Subjected to various risks, Do your RISK MANAGEMENT accordingly. We do not force or compel you to do investment
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   <!-- <script src="https://unpkg.com/chartjs-gauge@0.3.0/dist/chartjs-gauge.js"></script> -->
+    <script src="{{ url_for('static', filename='gauge.js') }}"></script>
+    <script src="{{ url_for('static', filename='info.js') }}"></script>
+</body>
+</html>
